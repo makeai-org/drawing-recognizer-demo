@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Recognizer Demo - MakeAI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" />
+</head>
+<body>
+    <nav>
+        <a href="https://makeai.org" target="_blank" rel="noopener noreferrer"><img src="{{ url_for('static', filename='logo.webp') }}"></a>
+    </nav>
+    <br><br>
+    <div class="title">
+        <h1>
+            Drawing Recognizer Demo
+        </h1>
+    </div>
+    <br>
+    <div class="demo">
+        {% block link %}
+        <h3>This will predict any digit from 0-9 and capitalized letter A-Z</h3>
+        <br><br>
+        <button onclick="clearCanvas()">Clear Canvas</button>
+        <br>
+        <br>
+        <div class="num-alp">
+            <div class="num-alp-title">Num or Alph</div>
+            <div class="num-alp-body">
+                ...
+            </div>
+        </div>
+        <div class="spec-char">
+            <div class="spec-char-title"><div class="selec-alp">Alp%</div><div class="selec-num">Num%</div></div>
+            <div class="spec-char-body">
+                ...
+            </div>
+        </div>
+        <canvas class="drawing_canvas" width="28" height="28"></canvas>
+        <br><br>
+        <div class="submit">
+            <button style="margin-right: 10px;" onclick="getImage()">Predict</button><button style="margin-left: 10px;" class="rec_num">N/A</button>
+        </div>
+        <br><br>
+        <h3>Using Tensorflow Version {{ version }}</h3>
+        <br>
+        <h3>Note: this AI model is for demonstration purposes only, it may occasionally produce inaccurate results.</h3>
+        <br><br>
+        {% endblock %}
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
